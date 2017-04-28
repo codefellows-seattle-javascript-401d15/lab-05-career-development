@@ -42,3 +42,16 @@ describe('methods', function() {
     });
   });
 });
+
+describe('methods', function() {
+  describe('reduce method', function() {
+    it('should sun the numbers', done => {
+      let list = new List(4, 6, 8, 16);
+      let newOutput = list.reduce(function(acc, curr) {
+        return acc + curr;
+      });
+      expect(newOutput).to.equal(34);
+      done();
+    });
+  });
+});

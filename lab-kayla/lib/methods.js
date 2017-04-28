@@ -62,8 +62,20 @@ List.prototype.map = function(callback) {
   }
   return newVals;
 };
-
+//[1, 2, 3, 4].reduce( (prev, curr) => prev + curr, 0 );
 //O(n)
-List.prototype.reduce = function() {
-
+List.prototype.reduce = function(callback, initialVal) {
+  let acc;
+  if(initialVal !== undefined) {
+    acc = initialVal;
+  }
+  for(let i = 0; i < this.length; i++) {
+    if(acc !== undefined) {
+      acc = callback(acc, this[i]);
+    }
+    else {
+      acc = this[i];
+    }
+  }
+  return acc;
 };
