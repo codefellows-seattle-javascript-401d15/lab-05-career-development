@@ -7,26 +7,24 @@ const List = module.exports = function() {
   this.length = arguments.length;
 };
 
-List.prototype.copy = function() {
-  let result = new List();
-  for (let key in this) {
-    result[key] = this[key];
-  }
+List.prototype.copy = function(source) {
+  let result = source;
   return result;
 };
 
 List.prototype.push = function(value) {
-  let result = this.copy();
+  let result = this.copy(this);
   result[result.length++] = value;
   return result;
 };
 
 List.prototype.pop = function() {
-  let result = this.copy();
+  let result = this.copy(this);
+  let val = result[result.length - 1];
   delete result[--result.length];
 
   return {
-    value: this[this.length - 1],
+    value: val,
     list: result,
   };
 };
@@ -38,7 +36,7 @@ List.prototype.forEach = function(callback) {
 };
 
 List.prototype.filter = function(value) {
-  let result = new List();
+  let result = this.copy(this);
   for (let i = 0; i < this.length; i++) {
     if (this[i] === value) result.push(value);
   }
@@ -46,7 +44,7 @@ List.prototype.filter = function(value) {
 };
 
 List.prototype.map = function(callback) {
-  let result = new List();
+  let result = this.copy(this);
   for (let i = 0; i < this.length; i++) {
     callback(this[i], i, this);
     result.push(this[i]);
