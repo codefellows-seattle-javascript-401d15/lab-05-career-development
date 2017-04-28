@@ -18,6 +18,23 @@ module.exports = exports = {};
 
 exports.Test = function() {
   let test = 'test';
-  console.log(test);
+  // console.log(test);
   return test;
 };
+
+// MDN: Array.prototype.forEach()
+var a = ['a', 'b', 'c'];
+
+a.forEach(function(element) {
+  console.log(element);
+});
+// a, b, c
+
+// MDN: Array.prototype.filter()
+var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+var longWords = words.filter(function(word){
+  return word.length > 6;
+});
+console.log(longWords);
+// Filtered array longWords is ["exuberant", "destruction", "present"]
