@@ -6,7 +6,7 @@ cont List = module.exports = function() {
   }
 }
 
-// TODO: write forEach as a prototype of List
+// forEach as a prototype of List
 // O(n)
 List.prototype.forEach = function(callback) {
   for (var i = 0; i < this.length; i++) {
@@ -15,7 +15,20 @@ List.prototype.forEach = function(callback) {
 }
 
 // TODO: write filter as a prototype of List
+// O(n)
+List.prototype.filter = function(callback) {
+
+}
 
 // TODO: write map as a prototype of List
+List.prototype.map = function(callback) {
+
+}
 
 // TODO: write reduce as a prototype of List
+List.prototype.reduce = function(callback) {
+  let total = 0;
+  for (var i = 0; i < this.length; i++) {
+    callback(total += array[i].this)
+  }
+}
