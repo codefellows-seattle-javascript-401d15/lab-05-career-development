@@ -24,7 +24,7 @@ List.prototype.filter = function(callback) {
   return result;
 };
 
-// TODO: write map as a prototype of List
+// Tmap as a prototype of List
 List.prototype.map = function(callback) {
   let newArray = [];
   for (let i = 0; i < this.length; i++) {
