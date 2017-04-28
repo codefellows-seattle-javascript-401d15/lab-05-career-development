@@ -53,4 +53,40 @@ List.prototype.map = function(callback) {
     mappedValue = callback.call(T, kValue, k, O);
     A[k] = mappedValue;
   }
+};
+
+//O(n) run time reduce
+List.prototype.reduce = function(callback /*, initialValue*/) {
+  if (this === null) {
+    throw new TypeError( 'Array.prototype.reduce ' + 'called on null or undefined' );
+    }
+    if (typeof callback !== 'function') {
+      throw new TypeError( callback + ' is not a function');
+    }
+    let O = Object(this);
+    let len = O.length >>> 0;
+    let k = 0;
+    let value;
+
+    if (arguments.length >= 2) {
+        value = arguments[1];
+      } else {
+        while (k < len && !(k in o)) {
+          k++;
+        }
+        if (k >= len) {
+          throw new TypeError( 'Reduce of empty array ' +
+            'with no initial value' );
+        }
+        value = o[k++];
+      }
+      while (k < len) {
+        if (k in o) {
+          value = callback(value, o[k], k, o);
+        }
+        k++;
+      }
+      return value;
+    }
+  });
 }
