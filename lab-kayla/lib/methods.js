@@ -1,10 +1,19 @@
 'use strict';
 
 const List = module.exports = function() {
-  for(let keys in arguments) {
+  for(let key in arguments) {
     this[key] = arguments[key];
   }
   this.length = arguments.length;
+};
+
+// O(n)
+List.prototype.copy = function() {
+  let result = new List();
+  for(let key in this) {
+    result[key] = this[key];
+  }
+  return result;
 };
 
 // O(n)
@@ -33,14 +42,28 @@ List.prototype.forEach = function(callback) {
 };
 
 //O(n)
-List.prototype.filter = function() {
-
+List.prototype.filter = function(callback) {
+  let newVals = new List();
+  for(let i = 0; i < this.length; i++) {
+    let tf = callback(this[i], i, this);
+    if(tf === true) {
+      newVals = newVals.push(this[i]);
+    }
+  }
+  return newVals;
 };
 
-List.prototype.map = function() {
-
+//O(n)
+List.prototype.map = function(callback) {
+  let newVals = new List();
+  for(let i = 0; i < this.length; i++) {
+    let newVal = callback(this[i], i, this);
+    newVals = newVals.push(newVal);
+  }
+  return newVals;
 };
 
+//O(n)
 List.prototype.reduce = function() {
 
 };
