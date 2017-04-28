@@ -1,34 +1,45 @@
 'use strict';
 
-cont List = module.exports = function() {
+const List = module.exports = function() {
   for(let keys in arguments) {
-    this[key] = arguemtns[key]
+    this[key] = arguemtns[key];
   }
-}
+};
 
 // forEach as a prototype of List
 // O(n)
 List.prototype.forEach = function(callback) {
-  for (var i = 0; i < this.length; i++) {
-    callback(array[i], i, this)
+  for (let i = 0; i < this.length; i++) {
+    callback(array[i], i, this);
   }
-}
+};
 
-// TODO: write filter as a prototype of List
+// filter as a prototype of List
 // O(n)
 List.prototype.filter = function(callback) {
-
-}
+  let result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) result.push[i];
+  }
+  return result;
+};
 
 // TODO: write map as a prototype of List
 List.prototype.map = function(callback) {
+  let newArray = [];
+  for (let i = 0; i < this.length; i++) {
+    callback(this[i]. i, this);
+    newArray.push[i];
+  }
+  return newArray;
+};
 
-}
-
-// TODO: write reduce as a prototype of List
+// reduce as a prototype of List
 List.prototype.reduce = function(callback) {
   let total = 0;
-  for (var i = 0; i < this.length; i++) {
-    callback(total += array[i].this)
+  for(let i = 0; i < this.length; i++) {
+    total =+ this[i];
+    callback(total, this[i], i, this);
   }
-}
+  return total;
+};
