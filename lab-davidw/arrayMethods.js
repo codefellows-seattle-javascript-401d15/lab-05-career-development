@@ -6,6 +6,15 @@ const List = module.exports = function() {
   }
 };
 
+//O(n)
+List.prototype.testCopy = function() {
+  let result = new List();
+  for(let key in this) {
+    result[key] = this[key];
+  }
+  return result;
+};
+
 // push as a prototype of List
 //O(n)
 List.prototype.testPush = function(value) {
