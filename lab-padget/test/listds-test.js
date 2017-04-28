@@ -7,10 +7,14 @@ const expect = chai.expect; // eslint-disable-line
 // TODO: write at least three tests for each method that you've written.
 console.log('evaluating listds.js');
 
+console.log('output of Test', ds.Test());
+console.log('output of Test2', ds.Test2());
+
 describe('in listds module', function() {
   describe('the list data structure', function() {
-    it('should implement forEach() as a method of list data structure', done => {
-      expect(ds.Test()).to.equal('test');
+    it.only('should implement forEach() as a method of list data structure', done => {
+      expect(ds.Test()).to.be.a('string');
+      expect(ds.Test2()).to.be.a('array');
       done();
     });
     it('should implement forEach() as pure methods on the List prototype', done => {
