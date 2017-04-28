@@ -145,7 +145,7 @@ describe('push method', function() {
   it('New Test Push should have value of 3 at index 1', function(done) {
     expect(pushList2['1']).to.equal(3);
     done();
-  })
+  });
 
 });
 
