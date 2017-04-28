@@ -4,34 +4,58 @@
     //your iterator
 // }[, thisArg]);
 
-//o(n) run time forEach
-List.prototype.forEach = function(func, context) {
-    let value;
-    context = context || this;  //apply the function to 'this' by default
-    for (key in this) {
-        if (this.hasOwnProperty(key)) {  //to rule out inherited properties
-            value = this[key];
-            func.call(context, key, value);
-        }
-    }
+
+// List constructor function
+const List = module.exports = function() {
+  for(let key in arguments) {
+    this[key] = arguments[key];
+  }
+  this.length = arguments.length;
+};
+// O(n)
+List.prototype.push = function(value) {
+  let result = this.copy();
+  result[result.length++] = value;
+  return result;
+};
+
+// O(n)
+List.prototype.copy = function() {
+  let result = new List();
+  for(let key in this) {
+    result[key] = this[key];
+  }
+  return result;
+};
+
+// O(n)
+List.prototype.pop = function() {
+  let result = this.copy();
+  delete result[--result.length];
+
+  return {
+    value: this[this.length - 1],
+    list: result,
+  };
+};
+
+//O(n) run time for forEach
+List.prototype.forEach = function(callback) {
+  for(let i = 0; i < this.length; i++) {
+    callback(this[i], i, this);
+  }
 };
 
 //O(n) run time filter
-List.prototype.filter = function(func) {
-  let len = this.length >>> 0;
-  if (typeof func != 'function')
-    throw new TypeError();
-
-  let res = [];
-  let thisp = arguments[1];
-  for (var i = 0; i < len; i++) {
-    if (i in this) {
-      let val = this[i]; // in case fun mutates this
-      if (func.call(thisp, val, i, this))
-        res.push(val);
+List.prototype.filter = function(callback) {
+  let result = new List();
+  for (let i = 0; i < this.length; i++) {
+    let tf = callback(this[i], i, this);
+    if(tf === true) {
+      result = result.push(this[i]);
     }
   }
-  return res;
+  return result;
 };
 
 //O(n) run time map
@@ -55,38 +79,11 @@ List.prototype.map = function(callback) {
   }
 };
 
-//O(n) run time reduce
-List.prototype.reduce = function(callback /*, initialValue*/) {
-  if (this === null) {
-    throw new TypeError( 'Array.prototype.reduce ' + 'called on null or undefined' );
-    }
-    if (typeof callback !== 'function') {
-      throw new TypeError( callback + ' is not a function');
-    }
-    let O = Object(this);
-    let len = O.length >>> 0;
-    let k = 0;
-    let value;
-
-    if (arguments.length >= 2) {
-        value = arguments[1];
-      } else {
-        while (k < len && !(k in o)) {
-          k++;
-        }
-        if (k >= len) {
-          throw new TypeError( 'Reduce of empty array ' +
-            'with no initial value' );
-        }
-        value = o[k++];
-      }
-      while (k < len) {
-        if (k in o) {
-          value = callback(value, o[k], k, o);
-        }
-        k++;
-      }
-      return value;
-    }
-  });
-}
+//// O(n)
+List.prototype.copy = function() {
+  let result = new List();
+  for(let key in this) {
+    result[key] = this[key];
+  }
+  return result;
+};
