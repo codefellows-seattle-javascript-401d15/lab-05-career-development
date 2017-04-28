@@ -60,7 +60,7 @@ describe('map method', function() {
     done();
   });
 
-  it('has a length of 1', function(done) {
+  it('Original to have a length of 1', function(done) {
     expect(mapList.length).to.equal(1);
     done();
   });
@@ -82,17 +82,17 @@ describe('filter method', function() {
     console.log(`ELE ${ele}`);
   });
 
-  it('has a value of 2', function(done) {
+  it('Original to have a value of 2', function(done) {
     expect(filterList['0']).to.equal(2);
     done();
   });
 
-  it('should not exist', function(done) {
+  it('Filter Test Value should be an array', function(done) {
     expect(testFilterValue).to.be.an('array');
     done();
   });
 
-  it('should be a number', function(done) {
+  it('Filter Test array should be a empty', function(done) {
     expect(testFilterValue).to.be.empty;
     done();
   });
@@ -105,17 +105,17 @@ describe('forEach method', function() {
     console.log(`ELE ${ele}`);
   });
 
-  it('has a value of 2', function(done) {
+  it('Original to have a value of 2', function(done) {
     expect(forEachList['0']).to.equal(2);
     done();
   });
 
-  it('should not exist', function(done) {
+  it('For Each Test should not exist', function(done) {
     expect(testForEachValue).to.not.exist;
     done();
   });
 
-  it('should be a number', function(done) {
+  it('For Each Test should be a undefined', function(done) {
     expect(testForEachValue).to.be.undefined;
     done();
   });
@@ -127,23 +127,24 @@ describe('push method', function() {
   let pushList = test.testPush(2);
   let pushList2 = pushList.testPush(3);
 
-  it('Original List to have a value of 2', function(done) {
+  it('First Push List to have a value of 2 at index 0', function(done) {
     expect(pushList['0']).to.equal(2);
     done();
   });
 
-  it('should exist', function(done) {
+  it('Test Push value should exist', function(done) {
     expect(pushList2).to.exist;
     done();
   });
 
-  it('should be a number', function(done) {
+  it('Test Push should not equal the New Test Push', function(done) {
     expect(pushList2).to.not.deep.equal(pushList);
     done();
   });
 
-  it('', function(done) {
+  it('New Test Push should have value of 3 at index 1', function(done) {
     expect(pushList2['1']).to.equal(3);
+    done();
   })
 
 });
@@ -152,7 +153,7 @@ describe('copy method', function() {
   let copyList = test.testPush(2);
   let testCopyValue = copyList.testCopy();
 
-  it('has a value of 2', function(done) {
+  it('Original to have a value of 2', function(done) {
     expect(copyList['0']).to.equal(2);
     console.log(testCopyValue);
     done();
@@ -168,12 +169,12 @@ describe('copy method', function() {
     done();
   })
 
-  it('Test Copy should exist', function(done) {
+  it('Test Copy value should exist', function(done) {
     expect(testCopyValue).to.exist;
     done();
   });
 
-  it('should be a number', function(done) {
+  it('Test value should be an object', function(done) {
     expect(testCopyValue).to.be.an('object');
     done();
   });
