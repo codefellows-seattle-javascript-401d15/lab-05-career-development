@@ -41,6 +41,7 @@ List.prototype.forEach = function(callback) {
   }
 };
 
+//O(n)
 List.prototype.filter = function(callback){
   let newArray = [];
 
@@ -51,6 +52,7 @@ List.prototype.filter = function(callback){
   }
 };
 
+//O(n)
 List.prototype.reduce = function(callback, accumulator) {
   let acc;
   if (accumulator) {
@@ -72,6 +74,7 @@ List.prototype.reduce = function(callback, accumulator) {
   return acc;
 };
 
+//O(n)
 List.prototype.map = function(callback) {
   let newArray = [];
 
