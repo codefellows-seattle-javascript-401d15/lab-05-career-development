@@ -13,3 +13,11 @@
 // TODO: in comments above or within each function, note the Big-O runtime.
 
 // Most of our current List implementation will have linear / O(n) runtime.
+
+module.exports = exports = {};
+
+exports.Test = function() {
+  let test = 'test';
+  console.log(test);
+  return test;
+};
