@@ -55,7 +55,7 @@ List.prototype.testFilter = function(callback) {
   }
 };
 
-//
+//O(n)
 List.prototype.testMap = function(callback) {
   let result = [];
 
@@ -66,7 +66,7 @@ List.prototype.testMap = function(callback) {
   return result;
 };
 
-//
+//O(n)
 List.prototype.testReduce = function(callback) {
   let result = 0;
 
