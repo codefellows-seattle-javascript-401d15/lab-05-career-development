@@ -1,5 +1,6 @@
-// 'use strict';
-//
-// const chai = require('chai');
-// const List = require('../arrayMethods.js');
-// const expect = require('chai').expect;
+'use strict';
+
+const List = require('../arrayMethods.js');
+const expect = require('chai').expect;
+
+let list = new List();

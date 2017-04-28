@@ -1,16 +1,35 @@
 'use strict';
 
 const List = module.exports = function() {
-  for(let keys in arguments) {
-    this[key] = arguemtns[key];
+  for(let key in arguments) {
+    this[key] = arguments[key];
   }
+};
+
+// push as a prototype of List
+//O(n)
+List.prototype.testPush = function(value) {
+  let result = this.testCopy();
+  result[result.length++] = value;
+  return result;
+};
+
+// pop as a prototype of List
+//O(n)
+List.prototype.testPop = function() {
+  let result = this.testCopy();
+  delete result[--result.length];
+  return{
+    value: this[this.length - 1],
+    list: result,
+  };
 };
 
 // forEach as a prototype of List
 // O(n)
 List.prototype.forEach = function(callback) {
   for (let i = 0; i < this.length; i++) {
-    callback(array[i], i, this);
+    callback(this[i], i, this);
   }
 };
 
