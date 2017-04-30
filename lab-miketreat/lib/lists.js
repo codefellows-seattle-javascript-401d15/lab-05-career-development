@@ -46,26 +46,12 @@ List.prototype.forEach = function(callback) {
 List.prototype.filter = function(){
   let args = arguments;
   let results = [];
-  console.log(args);
   for(let key in args){
     this.forEach(function(ele){
       if( args[key] === ele){
         results.push(ele);
       }
     });
-    // console.log(key);
-    // console.log(args[key]);
-    // console.log(this[key]);
-    // if(args[key] === this[key]){
-    //   console.log('success');
-    //   results.push(key);
-    // }
   }
-  // let results = [];
-  // this.forEach(function(ele){
-  //   if( === ele){
-  //     results.push(ele);
-  //   }
-  // });
   return results;
 };

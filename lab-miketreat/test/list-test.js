@@ -10,11 +10,10 @@ describe('list.js - List object methods', function (){
   describe('List.prototype.copy', function(){
 
     let testList = mockList.copy();
-    it('Should have properties equal to "51", "dodger", true, and 5', done => {
+    it('Should have properties equal to "51", "dodger", and true', done => {
       expect(testList).to.have.property('3').that.equals('51');
       expect(testList).to.have.property('2').that.equals('dodger');
       expect(testList).to.have.property('4').that.equals(true); // note this is a boolen not a string
-      expect(testList).to.have.property('length').that.equals(5); //note this is a number not a string
       done();
     });
   });
@@ -23,9 +22,10 @@ describe('list.js - List object methods', function (){
 describe('list.js - List object methods', function(){
   describe('List.prototype.push', function(){
     let testList = mockList.push('Full Stack Dev enroute');
-
+    console.log(testList);
     it('Should have property "Full Stack Dev enroute" at property "5"', done => {
       expect(testList).to.have.property('5').that.equals('Full Stack Dev enroute');
+      expect(testList).to.have.property('length').that.equals(6); //note this is a number not a string;
       done();
     });
   });
@@ -34,10 +34,16 @@ describe('list.js - List object methods', function(){
 describe('list.js - List object methods', function(){
   describe('List.protoype.pop', function(){
     let testList = mockList.pop();
-
+    console.log(testList);
     it('Should not have property with key "4"', done => {
       expect(testList).to.not.have.property('4');
       done();
     });
+  });
+});
+
+describe('list.js - List object methods', function(){
+  describe('List.prototype.forEach', function(){
+    let testList = mockList.forEach();
   });
 });
