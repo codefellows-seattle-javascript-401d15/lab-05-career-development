@@ -4,21 +4,19 @@ const List = module.exports = function() {
   for(let key in arguments) {
     this[key] = arguments[key];
   }
+  this.length = arguments.length;
 };
 
 //O(n)
-List.prototype.testCopy = function() {
-  let result = new List();
-  for(let key in this) {
-    result[key] = this[key];
-  }
+List.prototype.copy = function(source) {
+  let result = source;
   return result;
 };
 
 // push as a prototype of List
 //O(n)
 List.prototype.testPush = function(value) {
-  let result = this.testCopy();
+  let result = this.copy(this);
   result[result.length++] = value;
   return result;
 };
@@ -26,17 +24,19 @@ List.prototype.testPush = function(value) {
 // pop as a prototype of List
 //O(n)
 List.prototype.testPop = function() {
-  let result = this.testCopy();
+  let result = this.copy(this);
+  let val = result[result.length -1];
   delete result[--result.length];
-  return{
-    value: this[this.length - 1],
+
+  return {
+    value: val,
     list: result,
   };
 };
 
 // forEach as a prototype of List
 // O(n)
-List.prototype.forEach = function(callback) {
+List.prototype.testForEach = function(callback) {
   for (let i = 0; i < this.length; i++) {
     callback(this[i], i, this);
   }
@@ -44,30 +44,30 @@ List.prototype.forEach = function(callback) {
 
 // filter as a prototype of List
 // O(n)
-List.prototype.filter = function(callback) {
-  let result = [];
+List.prototype.testFilter = function(value) {
+  let result = this.copy(this);
   for (let i = 0; i < this.length; i++) {
-    if (callback(this[i], i, this)) result.push[i];
+    if (this[i] === value) result.testPush(value);
   }
   return result;
 };
 
 // Tmap as a prototype of List
-List.prototype.map = function(callback) {
+List.prototype.testMap = function(callback) {
   let newArray = [];
   for (let i = 0; i < this.length; i++) {
     callback(this[i]. i, this);
-    newArray.push[i];
+    newArray.push(this[i]);
   }
   return newArray;
 };
 
 // reduce as a prototype of List
-List.prototype.reduce = function(callback) {
-  let total = 0;
+List.prototype.testReduce = function(callback) {
+  let sum = 0;
   for(let i = 0; i < this.length; i++) {
-    total =+ this[i];
-    callback(total, this[i], i, this);
+    sum += this[i];
+    callback(sum, this[i], i, this);
   }
-  return total;
+  return sum;
 };
