@@ -36,3 +36,36 @@ List.prototype.pop = function(){
     list: result,
   };
 };
+//O(n) because it only iterates over n things in the array
+List.prototype.forEach = function(callback) {
+  for(let i = 0; i < this.length; i++) {
+    callback(this[i], i, this);
+  }
+};
+
+List.prototype.filter = function(){
+  let args = arguments;
+  let results = [];
+  console.log(args);
+  for(let key in args){
+    this.forEach(function(ele){
+      if( args[key] === ele){
+        results.push(ele);
+      }
+    });
+    // console.log(key);
+    // console.log(args[key]);
+    // console.log(this[key]);
+    // if(args[key] === this[key]){
+    //   console.log('success');
+    //   results.push(key);
+    // }
+  }
+  // let results = [];
+  // this.forEach(function(ele){
+  //   if( === ele){
+  //     results.push(ele);
+  //   }
+  // });
+  return results;
+};
