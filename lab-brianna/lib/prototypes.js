@@ -1,10 +1,38 @@
 'use strict';
 
-function List () {
-  for(let keys in arguments) {
+const List = module.exports = function() {
+  for(let key in arguments) {
     this[key] = arguments[key];
   }
-}
+  this.length = arguments.length;
+};
+
+ // O(n)
+List.prototype.copy = function() {
+  let result = new List();
+  for(let key in this) {
+    result[key] = this[key];
+  }
+  return result;
+};
+
+ // O(n)
+List.prototype.push = function(value) {
+  let result = this.copy();
+  result[result.length++] = value;
+  return result;
+};
+
+ // O(n)
+List.prototype.pop = function() {
+  let result = this.copy();
+  delete result[--result.length];
+
+  return {
+    value: this[this.length - 1],
+    list: result,
+  };
+};
 
 // O(n)
 List.prototype.forEach = function (callback) {
@@ -13,11 +41,34 @@ List.prototype.forEach = function (callback) {
   }
 };
 
-//.filter()
-List.prototype.filter = function
+// 0(n)
+List.prototype.filter = function(callback) {
+  let result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === callback) result.push(result);
+  }
+  return result;
 
-//.map()
-List.prototype.map = function
+};
 
-//.reduce()
-List.prototype.reduce = function 
+// O(n)
+List.prototype.map = function (callback) {
+  let result = this.copy(this);
+  for (let i = 0; i < this.length; i++) {
+    callback(this[i], i, this);
+    result.push(this[i]);
+  }
+  return result;
+
+};
+
+//O(n)
+List.prototype.reduce = function (callback) {
+  let result = 0;
+  for (let i = 0; i < this.length; i++) {
+    result += this[i];
+    callback(result, this[i], i, this);
+  }
+  return result;
+
+};

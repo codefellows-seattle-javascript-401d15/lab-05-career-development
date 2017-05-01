@@ -1,0 +1,31 @@
+{
+  "name": "lab-brianna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brisourceful/lab-05-career-development.git"
+  },
+  "keywords": [
+    "node",
+    "mocha",
+    "chai"
+  ],
+  "author": "Brianna Burrows",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brisourceful/lab-05-career-development/issues"
+  },
+  "homepage": "https://github.com/brisourceful/lab-05-career-development#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
