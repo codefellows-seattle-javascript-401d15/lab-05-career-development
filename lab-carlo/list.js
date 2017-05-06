@@ -1,7 +1,7 @@
 'use strict';
 
 const List = module.exports = function() {
-  for(let keys in arguments) {
+  for(let key in arguments) {
     this[key] = arguments[key];
   }
   this.length = arguments.length;
