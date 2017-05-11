@@ -1,0 +1,15 @@
+{
+  "name": "lab-steven",
+  "version": "1.0.0",
+  "description": "Array Method Construction Lab",
+  "main": "list.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "list",
+    "bigO"
+  ],
+  "author": "CF Steven Johnson",
+  "license": "MIT"
+}
