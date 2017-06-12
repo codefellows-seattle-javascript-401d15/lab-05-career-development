@@ -46,20 +46,26 @@ List.prototype.filter = function(data){
   return results;
 };
 //O(n)
-List.prototype.map = function(callback) {
-  let result = this.copy(this);
+List.prototype.map = function(callback){
+  let array1 =[];
   for (var i = 0; i < this.length; i++) {
-    callback(this[i], i, this);
-    result.push(this[i]);
+    array1.push(callback(this[i]));
   }
-  return result;
+  return(array1);
 };
 
-List.prototype.reduce = function(callback) {
-  let result = 0;
-  for (var i = 0; i < this.length; i++) {
-    result += this[i];
-    callback(this[i], i, this);
+List.prototype.reduce = function(callback, initialVal) {
+  let acc;
+  if(initialVal !== undefined) {
+    acc = initialVal;
   }
-  return result;
+  for(let i = 0; i < this.length; i++) {
+    if(acc !== undefined) {
+      acc = callback(acc, this[i]);
+    }
+    else {
+      acc = this[i];
+    }
+  }
+  return acc;
 };
