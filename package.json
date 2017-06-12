@@ -1,0 +1,26 @@
+{
+  "name": "lab-05-career-development",
+  "version": "1.0.0",
+  "description": "![cf](http://i.imgur.com/7v5ASc8.png) lab 05 - List Data Structure\r ====",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.3.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renegadellama/lab-05-career-development.git"
+  },
+  "author": "Isak Swearingen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renegadellama/lab-05-career-development/issues"
+  },
+  "homepage": "https://github.com/renegadellama/lab-05-career-development#readme"
+}
