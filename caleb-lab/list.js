@@ -45,19 +45,24 @@ List.prototype.forEach = function(callback) {
     callback(this[i], i, this)
   }
 }
-// # Whiteboard Exercise (Groups of 4)
-// * Implement `forEach()` as a method of your List Data Structure
-// * Implement `filter()` as a method of your List Data Structure
+
+//O(n)
+List.prototype.map = function(callback) {
+  let result = []
+  for(let i = 0; i < this.length; i++) {
+    callback(this[i], i, this)
+    result.push(this[i])
+  }
+  return result
+}
 
 // O(n)
-List.prototype.filter = function(data){
-  let  newList = new List()
-  for(let i = 0; i < this.length; i++){
-    if(this[i] === data){
-      newList.push(this[i])
-    }
+List.prototype.filter = function(callback){
+  let result = []
+  for(let i = 0; i < this.length; i++) {
+    if(callback(this[i], i, this)) result.push[i]
   }
-  return newList
+  return result
 }
 
 // O(n)
@@ -69,21 +74,4 @@ List.prototype.reduce = function(callback, optionalAccumulator){
     acc = callback(acc, this[i])
   }
   return acc
-}
-
-//O(n)
-List.prototype.print = function () {
-  let output = '['
-  let current = this.head
-
-  while (current !== null) {
-    output += current.val
-    if(current.next !== null) {
-      output += ','
-    }
-    current = current.next
-  }
-
-  output += ']'
-  console.log(output)
 }
